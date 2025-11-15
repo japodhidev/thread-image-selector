@@ -1,16 +1,8 @@
-// Check if URL matches the pattern
-function isMatchingURL() {
-    const url = window.location.href;
-    return url.includes('vipergirls.to/threads/');
-}
+// Wait for page to fully load
+window.addEventListener('load', function() {
+    initializeImageSelector();
+});
 
-// Initialize the extension only on matching URLs
-if (isMatchingURL()) {
-    // Wait for page to fully load
-    window.addEventListener('load', function() {
-        initializeImageSelector();
-    });
-}
 
 function initializeImageSelector() {
     let selectedImages = new Set();
@@ -45,6 +37,7 @@ function initializeImageSelector() {
         // Check if clicked element is an image
         if (e.target.tagName === 'IMG') {
             e.preventDefault();
+            e.stopPropagation();
             toggleImageSelection(e.target);
         }
     });
