@@ -35,8 +35,7 @@
       "id": "@thread-image-selector",
       "data_collection_permissions": {
         "required": ["none"]
-      },
-      "update_url": "https://japodhidev.github.io/thread-image-selector/updates.json"
+      }
     }
   }
 }
