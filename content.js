@@ -18,8 +18,18 @@ function initializeImageSelector() {
         <div class="panel-content">
             <div class="counter">Selected: <span id="selected-count">0</span></div>
             <button id="view-selected" class="btn">View Selected</button>
-            <button id="copy-selected" class="btn">Copy To Clipboard</button>
-            <button id="clear-selected" class="btn btn-danger">Clear All</button>
+            <button id="copy-selected" class="btn">
+                Copy To Clipboard
+                <span id="check-icon-select">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g></svg>
+                </span>
+            </button>
+            <button id="clear-selected" class="btn btn-danger">
+                Clear All
+                <span id="check-icon-clear">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g></svg>
+                </span>
+            </button>
         </div>
     `;
     document.body.appendChild(controlPanel);
@@ -51,6 +61,7 @@ function initializeImageSelector() {
         selectedImages.clear();
         saveSelectedImages();
         updateCounter();
+        showIcon("check-icon-clear");
         removeImageHighlights();
     });
 
@@ -66,6 +77,8 @@ function initializeImageSelector() {
                 console.error("Couldn't copy to the clipboard!");
             },
         );
+        showIcon("check-icon-select");
+
     });
     
     document.getElementById('view-selected').addEventListener('click', function() {
@@ -133,4 +146,16 @@ function initializeImageSelector() {
             }
         });
     }, 1000);
+
+    function showIcon(iconId) {
+        const checkIcon = document.getElementById(iconId);
+        if (checkIcon) {
+            checkIcon.style.display = "block";
+        }
+
+        // Hide button after 2 seconds
+        setTimeout(() => {
+            checkIcon.style.display = 'none';
+        }, 2000);
+    }
 }

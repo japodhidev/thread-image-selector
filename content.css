@@ -56,7 +56,9 @@
 }
 
 .btn {
-    display: block;
+    display: inline-flex;
+    gap: 4px;
+    justify-content: space-between;
     width: 100%;
     padding: 8px 12px;
     margin-bottom: 10px;
@@ -85,4 +87,8 @@
     outline-offset: 2px;
     box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
     opacity: 0.9;
+}
+
+#check-icon-clear, #check-icon-select {
+    display: none;
 }
